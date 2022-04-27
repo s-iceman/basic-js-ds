@@ -129,6 +129,15 @@ class BinarySearchTree {
       return;
     }
 
+    if (node.right === null){
+      if (parentRemovedNode.left === node){
+        parentRemovedNode.left = node.left;
+        return;
+      }
+      parentRemovedNode.right = node.left;
+      return;
+    }
+
     const newNodeValue = this.min(node.right);
     let parentNewNode = this.findParentNode(node, newNodeValue);
     node.data = newNodeValue;
